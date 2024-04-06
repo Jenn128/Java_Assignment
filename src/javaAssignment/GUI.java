@@ -49,10 +49,11 @@ public class GUI extends JFrame
         	.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
         	.addComponent(Task_Label)
         	.addComponent(inputField)
-        	.addComponent(Result_Label))
+        	.addComponent(Result_Label)
         	.addComponent(Second_Result_Label)
         	.addComponent(Third_Result_Label)
         	.addComponent(Fourth_Result_Label)
+        	)
         );
         
         layout.setVerticalGroup
