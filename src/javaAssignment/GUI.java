@@ -26,6 +26,10 @@ public class GUI extends JFrame
 {
 	private JFrame frame;
 	private JTextField inputField;
+	private JTextField second_inputField;
+
+
+
 	private JPanel panel;
 	private JLabel Task_Label;
 	private JLabel Result_Label;
@@ -36,6 +40,7 @@ public class GUI extends JFrame
 	private JLabel Third_Task_Label;
 	private JButton yesButton;
 	private JButton noButton;
+	private JLabel instruction_Label;
 	
 	
     public GUI() 
@@ -58,56 +63,64 @@ public class GUI extends JFrame
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.5;
         c.gridx = 0;
-        c.gridy = 2;
+        c.gridy = 6;
         panel.add(inputField, c);
+        second_inputField = new JTextField(20);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 11;
+        panel.add(inputField, c);
+        getSecond_inputField().setVisible(false);
         Task_Label = new JLabel("Please enter a term to be searched:"); 
         c.weightx = 0.5;
         c.gridx = 0;
-        c.gridy = 1;
+        c.gridy = 5;
         panel.add(Task_Label, c);
         Result_Label = new JLabel(""); 
         c.weightx = 0.5;
         c.gridx = 0;
-        c.gridy = 3;
+        c.gridy = 1;
         panel.add(Result_Label, c);
         Second_Result_Label = new JLabel(""); 
         c.weightx = 0.5;
         c.gridx = 0;
-        c.gridy = 4;
+        c.gridy = 2;
         panel.add(Second_Result_Label, c);
         Third_Result_Label = new JLabel("");
         c.weightx = 0.5;
         c.gridx = 0;
-        c.gridy = 5;
+        c.gridy = 3;
         panel.add(Third_Result_Label, c);
         Fourth_Result_Label = new JLabel("");
         c.weightx = 0.5;
         c.gridx = 0;
-        c.gridy = 6;
+        c.gridy = 4;
         panel.add(Fourth_Result_Label, c);
-        Third_Task_Label = new JLabel(""); 
-        c.weightx = 0.5;
-        c.gridx = 0;
-        c.gridy = 7;
-        panel.add(Third_Task_Label, c);
         yesButton = new JButton("Yes");
         c.weightx = 0.5;
         c.gridx = 0;
-        c.gridy = 9;
+        c.gridy = 8;
         panel.add(yesButton, c);
         yesButton.setVisible(false); // Initially hidden
         noButton = new JButton("No");
         c.weightx = 0.5;
         c.gridx = 0;
-        c.gridy = 10;
+        c.gridy = 9;
         panel.add(noButton, c);
         noButton.setVisible(false); // Initially hidden
         Second_Task_Label = new JLabel("Would you like any other words to be searched beside this one:"); 
         c.weightx = 0.5;
         c.gridx = 0;
-        c.gridy = 8;
+        c.gridy = 7;
         panel.add(Second_Task_Label, c);
-        Second_Task_Label.setVisible(false); // Initially hidden
+        Second_Task_Label.setVisible(false); 
+        instruction_Label = new JLabel("please enter the term you would like to search with the first word"); 
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 10;
+        panel.add(instruction_Label, c);
+        instruction_Label.setVisible(false); /// Initially hidden
        
    
         frame.getContentPane().add(panel);
@@ -133,6 +146,14 @@ public class GUI extends JFrame
 		this.inputField = inputField;
 	}
 
+	public JTextField getSecond_inputField() {
+		return second_inputField;
+	}
+
+	public void setSecond_inputField(JTextField second_inputField) {
+		this.second_inputField = second_inputField;
+	}
+	
 	public JPanel getPanel() {
 		return panel;
 	}
@@ -147,6 +168,14 @@ public class GUI extends JFrame
 
 	public void setTask_Label(JLabel task_Label) {
 		Task_Label = task_Label;
+	}
+
+	public JLabel getInstruction_Label() {
+		return instruction_Label;
+	}
+
+	public void setInstruction_Label(JLabel instruction_Label) {
+		this.instruction_Label = instruction_Label;
 	}
 
 	public JLabel getResult_Label() {
