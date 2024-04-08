@@ -24,113 +24,196 @@ import javax.swing.SwingUtilities;
 
 public class GUI extends JFrame 
 {
+	private JFrame frame;
+	private JTextField inputField;
+	private JPanel panel;
+	private JLabel Task_Label;
+	private JLabel Result_Label;
+	private JLabel Second_Result_Label;
+	private JLabel Third_Result_Label;
+	private JLabel Fourth_Result_Label;
+	private JLabel Second_Task_Label;
+	private JLabel Third_Task_Label;
+	private JButton yesButton;
+	private JButton noButton;
+	
+	
     public GUI() 
     {
-    	JFrame frame = new JFrame("GUI");
+    	frame = new JFrame("GUI");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 		boolean shouldFill = true;
-		if (shouldFill) {
-                        //natural height, maximum width
-                        c.fill = GridBagConstraints.HORIZONTAL;
-        }
-       
+		if (shouldFill) 
+		{
+	        //natural height, maximum width
+	        c.fill = GridBagConstraints.HORIZONTAL;
+        
+		}
  
-        JTextField inputField = new JTextField(10);
+        inputField = new JTextField(20);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 2;
         panel.add(inputField, c);
-        JLabel Task_Label = new JLabel("Please enter a term to be searched:"); 
+        Task_Label = new JLabel("Please enter a term to be searched:"); 
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 1;
         panel.add(Task_Label, c);
-        JLabel Result_Label = new JLabel(""); 
+        Result_Label = new JLabel(""); 
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 3;
         panel.add(Result_Label, c);
-        JLabel Second_Result_Label = new JLabel(""); 
+        Second_Result_Label = new JLabel(""); 
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 4;
         panel.add(Second_Result_Label, c);
-        JLabel Third_Result_Label = new JLabel("");
+        Third_Result_Label = new JLabel("");
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 5;
         panel.add(Third_Result_Label, c);
-        JLabel Fourth_Result_Label = new JLabel("");
+        Fourth_Result_Label = new JLabel("");
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 6;
         panel.add(Fourth_Result_Label, c);
-     
-        JLabel[] Labels = {Result_Label, Second_Result_Label, Third_Result_Label, Fourth_Result_Label};
-        
-        String[] order = {"First", "Second", "Third", "Fourth"};
-        
-        inputField.addActionListener(new ActionListener() 
-        {
-            public void actionPerformed(ActionEvent e) 
-            {
-            	
-            	String userInput = inputField.getText(); 
-               
-                //String result = result_of_UserInput(userInput);
-              
-            	int result = Search_Christmas(userInput);
-                 
-                //Result_Label.setText("The word " + userInput + " was found " + String.valueOf(result) + " time(s) in the Christmas text file" );
-                
-                int second_result = Search_Easter(userInput);
-                
-                //Second_Result_Label.setText("The word " + userInput + " was found " + String.valueOf(second_result) + " time(s) in the Easter text file");
-                
-                int third_result = Search_NewYear(userInput);
-                
-                //Third_Result_Label.setText("The word " + userInput + " was found " + String.valueOf(third_result) + " time(s) in the New Year text file");
-                
-                int fourth_result = Search_Halloween(userInput);
-                
-                //\Fourth_Result_Label.setText("The word " + userInput + " was found " + String.valueOf(fourth_result) + " time(s) in the Halloween text file");
-               
-                int[] values = {result, second_result, third_result, fourth_result};
-                
-                for (int i = 0; i < values.length - 1; i++) {
-                    for (int j = 0; j < values.length - i - 1; j++) {
-                        if (values[j] < values[j + 1]) {
-                            // Swap values[j] and values[j + 1]
-                            int temp = values[j];
-                            values[j] = values[j + 1];
-                            values[j + 1] = temp;
-                        }
-                    }
-                }
-                
-               
-                
-                for (int i = 0; i < values.length; i++) {
-                    Labels[i].setText("The word " + userInput + " was found " + values[i] + " time(s) in the " + order[i] + " text file");
-                }
-                
-                
-                
-                
-            }
-        });
-
+        Third_Task_Label = new JLabel(""); 
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 7;
+        panel.add(Third_Task_Label, c);
+        yesButton = new JButton("Yes");
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 9;
+        panel.add(yesButton, c);
+        yesButton.setVisible(false); // Initially hidden
+        noButton = new JButton("No");
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 10;
+        panel.add(noButton, c);
+        noButton.setVisible(false); // Initially hidden
+        Second_Task_Label = new JLabel("Would you like any other words to be searched beside this one:"); 
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 8;
+        panel.add(Second_Task_Label, c);
+        Second_Task_Label.setVisible(false); // Initially hidden
+       
+   
         frame.getContentPane().add(panel);
         frame.setSize(500, 300);
         frame.setVisible(true);
+        
+        
     }
-    
-    public static int Search_Christmas(String userInput) 
+     
+    public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JTextField getInputField() {
+		return inputField;
+	}
+
+	public void setInputField(JTextField inputField) {
+		this.inputField = inputField;
+	}
+
+	public JPanel getPanel() {
+		return panel;
+	}
+
+	public void setPanel(JPanel panel) {
+		this.panel = panel;
+	}
+
+	public JLabel getTask_Label() {
+		return Task_Label;
+	}
+
+	public void setTask_Label(JLabel task_Label) {
+		Task_Label = task_Label;
+	}
+
+	public JLabel getResult_Label() {
+		return Result_Label;
+	}
+
+	public void setResult_Label(JLabel result_Label) {
+		Result_Label = result_Label;
+	}
+
+	public JLabel getSecond_Result_Label() {
+		return Second_Result_Label;
+	}
+
+	public void setSecond_Result_Label(JLabel second_Result_Label) {
+		Second_Result_Label = second_Result_Label;
+	}
+
+	public JLabel getThird_Result_Label() {
+		return Third_Result_Label;
+	}
+
+	public void setThird_Result_Label(JLabel third_Result_Label) {
+		Third_Result_Label = third_Result_Label;
+	}
+
+	public JLabel getFourth_Result_Label() {
+		return Fourth_Result_Label;
+	}
+
+	public void setFourth_Result_Label(JLabel fourth_Result_Label) {
+		Fourth_Result_Label = fourth_Result_Label;
+	}
+
+	public JLabel getSecond_Task_Label() {
+		return Second_Task_Label;
+	}
+
+	public void setSecond_Task_Label(JLabel second_Task_Label) {
+		Second_Task_Label = second_Task_Label;
+	}
+
+	public JLabel getThird_Task_Label() {
+		return Third_Task_Label;
+	}
+
+	public void setThird_Task_Label(JLabel third_Task_Label) {
+		Third_Task_Label = third_Task_Label;
+	}
+
+	public JButton getYesButton() {
+		return yesButton;
+	}
+
+	public void setYesButton(JButton yesButton) {
+		this.yesButton = yesButton;
+	}
+
+	public JButton getNoButton() {
+		return noButton;
+	}
+
+	public void setNoButton(JButton noButton) {
+		this.noButton = noButton;
+	}
+
+	public static int Search_Christmas(String userInput) 
     {
         int counter = 0;
         File firstFile = new File("Christmas.txt");
