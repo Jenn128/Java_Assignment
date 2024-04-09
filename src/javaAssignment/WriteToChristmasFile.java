@@ -43,7 +43,7 @@ public class WriteToChristmasFile
 		    		+ "to children during the Christmas season and have their own body of traditions and lore. Because gift-giving "
 		    		+ "and many other aspects of the Christmas festival involve heightened economic activity, the holiday has become a "
 		    		+ "significant event and a key sales period for retailers and businesses. Over the past few centuries, Christmas has "
-		    		+ "had a steadily growing economic effect in many regions of the world.");
+		    		+ "had a steadily growing economic effect in many regions of the world. ");
 		    christmasWrite.close();
 		    System.out.println("Successfully wrote to the file.");
 	    } 

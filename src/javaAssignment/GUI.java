@@ -26,21 +26,14 @@ public class GUI extends JFrame
 {
 	private JFrame frame;
 	private JTextField inputField;
-	private JTextField second_inputField;
-
-
-
 	private JPanel panel;
 	private JLabel Task_Label;
-	private JLabel Result_Label;
-	private JLabel Second_Result_Label;
-	private JLabel Third_Result_Label;
-	private JLabel Fourth_Result_Label;
-	private JLabel Second_Task_Label;
+	private static JLabel Result_Label;
+	private static JLabel Second_Result_Label;
+	private static JLabel Third_Result_Label;
+	private static JLabel Fourth_Result_Label;
+	private static JLabel Second_Task_Label;
 	private JLabel Third_Task_Label;
-	private JButton yesButton;
-	private JButton noButton;
-	private JLabel instruction_Label;
 	
 	
     public GUI() 
@@ -65,13 +58,6 @@ public class GUI extends JFrame
         c.gridx = 0;
         c.gridy = 6;
         panel.add(inputField, c);
-        second_inputField = new JTextField(20);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.5;
-        c.gridx = 0;
-        c.gridy = 11;
-        panel.add(inputField, c);
-        getSecond_inputField().setVisible(false);
         Task_Label = new JLabel("Please enter a term to be searched:"); 
         c.weightx = 0.5;
         c.gridx = 0;
@@ -97,32 +83,13 @@ public class GUI extends JFrame
         c.gridx = 0;
         c.gridy = 4;
         panel.add(Fourth_Result_Label, c);
-        yesButton = new JButton("Yes");
-        c.weightx = 0.5;
-        c.gridx = 0;
-        c.gridy = 8;
-        panel.add(yesButton, c);
-        yesButton.setVisible(false); // Initially hidden
-        noButton = new JButton("No");
-        c.weightx = 0.5;
-        c.gridx = 0;
-        c.gridy = 9;
-        panel.add(noButton, c);
-        noButton.setVisible(false); // Initially hidden
-        Second_Task_Label = new JLabel("Would you like any other words to be searched beside this one:"); 
+        Second_Task_Label = new JLabel(""); 
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 7;
         panel.add(Second_Task_Label, c);
-        Second_Task_Label.setVisible(false); 
-        instruction_Label = new JLabel("please enter the term you would like to search with the first word"); 
-        c.weightx = 0.5;
-        c.gridx = 0;
-        c.gridy = 10;
-        panel.add(instruction_Label, c);
-        instruction_Label.setVisible(false); /// Initially hidden
-       
-   
+        
+        
         frame.getContentPane().add(panel);
         frame.setSize(500, 300);
         frame.setVisible(true);
@@ -146,13 +113,6 @@ public class GUI extends JFrame
 		this.inputField = inputField;
 	}
 
-	public JTextField getSecond_inputField() {
-		return second_inputField;
-	}
-
-	public void setSecond_inputField(JTextField second_inputField) {
-		this.second_inputField = second_inputField;
-	}
 	
 	public JPanel getPanel() {
 		return panel;
@@ -170,13 +130,6 @@ public class GUI extends JFrame
 		Task_Label = task_Label;
 	}
 
-	public JLabel getInstruction_Label() {
-		return instruction_Label;
-	}
-
-	public void setInstruction_Label(JLabel instruction_Label) {
-		this.instruction_Label = instruction_Label;
-	}
 
 	public JLabel getResult_Label() {
 		return Result_Label;
@@ -218,33 +171,11 @@ public class GUI extends JFrame
 		Second_Task_Label = second_Task_Label;
 	}
 
-	public JLabel getThird_Task_Label() {
-		return Third_Task_Label;
-	}
-
-	public void setThird_Task_Label(JLabel third_Task_Label) {
-		Third_Task_Label = third_Task_Label;
-	}
-
-	public JButton getYesButton() {
-		return yesButton;
-	}
-
-	public void setYesButton(JButton yesButton) {
-		this.yesButton = yesButton;
-	}
-
-	public JButton getNoButton() {
-		return noButton;
-	}
-
-	public void setNoButton(JButton noButton) {
-		this.noButton = noButton;
-	}
 
 	public static int Search_Christmas(String userInput) 
     {
         int counter = 0;
+        int second_counter = 0;
         File firstFile = new File("Christmas.txt");
 
         Scanner christmasScanner = null;
@@ -254,6 +185,23 @@ public class GUI extends JFrame
             while (christmasScanner.hasNext()) 
             {
                 String Word = christmasScanner.next();
+                                if(userInput.contains("*"))
+            	{
+                	Result_Label.setVisible(false);
+                	Second_Result_Label.setVisible(false);
+                	Third_Result_Label.setVisible(false);
+                	Fourth_Result_Label.setVisible(false);
+                	
+                	String without_wildcard = userInput.replace("*", "");
+            		if (Word.contains(without_wildcard))
+                    {
+            			System.out.println(Word);
+            			second_counter++;
+                    }
+            		
+            		Second_Task_Label.setText("The word: " + without_wildcard + " was found in " + second_counter + " different words");
+            	}
+                
                 if (Word.equals(userInput)) 
                 {
                     counter++;
