@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 
 public class ActionListeners extends GUI
 {
-	//varibale to store the user input
+	//variable to store the user input
 	private String userInput;
 
 	//Getter and setter methods for retrieving and setting the user input
@@ -60,9 +60,12 @@ public class ActionListeners extends GUI
 	            int[] values = {result, secondResult, thirdResult, fourthResult};
 	        	
 	            //Bubble sort algorithm in descending order
-	            for (int i = 0; i < values.length - 1; i++) {
-	                for (int j = 0; j < values.length - i - 1; j++) {
-	                    if (values[j] < values[j + 1]) {
+	            for (int i = 0; i < values.length - 1; i++) 
+	            {
+	                for (int j = 0; j < values.length - i - 1; j++) 
+	                {
+	                    if (values[j] < values[j + 1]) 
+	                    {
 	                        // Swap values[j] and values[j + 1]
 	                        int temp = values[j];
 	                        values[j] = values[j + 1];
@@ -71,7 +74,7 @@ public class ActionListeners extends GUI
 	                }
 	            }
 	            
-	          //Update the result labels with the search results
+	            //Update the result labels with the search results
 	            JLabel[] Labels = {getFirstFileResult(), getSecondFileResult(), getThirdFileResult(), getFourthFileResult()};
 	            
 	            String[] order = {"First", "Second", "Third", "Fourth"};
@@ -83,12 +86,15 @@ public class ActionListeners extends GUI
 	            
 	            if(userInput.contains("*"))
 	            {
-		            //Sort wildcard search results in descending order
+		            //Sort wild card search results in descending order
 		            int[] valuesWildcard = {getChristmasCounter(), getEasterCounter(), getNewYearCounter(), getHalloweenCounter()};
 		            
-		            for (int i = 0; i < valuesWildcard.length - 1; i++) {
-		                for (int j = 0; j < valuesWildcard.length - i - 1; j++) {
-		                    if (valuesWildcard[j] < valuesWildcard[j + 1]) {
+		            for (int i = 0; i < valuesWildcard.length - 1; i++) 
+		            {
+		                for (int j = 0; j < valuesWildcard.length - i - 1; j++) 
+		                {
+		                    if (valuesWildcard[j] < valuesWildcard[j + 1]) 
+		                    {
 		                        // Swap values[j] and values[j + 1]
 		                        int temp = valuesWildcard[j];
 		                        valuesWildcard[j] = valuesWildcard[j + 1];
@@ -104,7 +110,7 @@ public class ActionListeners extends GUI
 	            		Labels_2[i].setText("The word: " + getwithoutWildcard() + " was found in " + valuesWildcard[i] + " different word(s) in the " + order[i] + " text file");
 	            	}
 		            
-		            //the wildcard result labels are updated
+		            //the wild card result labels are updated
 		            for(int i = 0; i < valuesWildcard.length; i++)
 	            	{
 	            		Labels_2[i].setText("The word: " + getwithoutWildcard() + " was found in " + valuesWildcard[i] + " different word(s) in the " + order[i] + " text file");
@@ -117,12 +123,12 @@ public class ActionListeners extends GUI
 		
 	}
 		
-		//Main method
-		public static void main(String[] args) 
-		{
-			//instance of ActionListeners
-			new ActionListeners();
-		}
+	//Main method
+	public static void main(String[] args) 
+	{
+		//instance of ActionListeners
+		new ActionListeners();
+	}
 }
 	
 
