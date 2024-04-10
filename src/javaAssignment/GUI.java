@@ -27,15 +27,22 @@ public class GUI extends JFrame
 	private JFrame frame;
 	private JTextField inputField;
 	private JPanel panel;
-	private JLabel Task_Label;
-	private static JLabel Result_Label;
-	private static JLabel Second_Result_Label;
-	private static JLabel Third_Result_Label;
-	private static JLabel Fourth_Result_Label;
-	private static JLabel Second_Task_Label;
-	private JLabel Third_Task_Label;
+	private JLabel searchLabel;
+	private static JLabel firstFileResult;
+	private static JLabel secondFileResult;
+	private static JLabel thirdFileResult;
+	private static JLabel fourthFileResult;
+	private static JLabel firstWildcardResult;
+	private static JLabel secondWildcardResult;
+	private static JLabel thirdWildcardResult;
+	private static JLabel fourthWildcardResult;
+	private static int christmasCounter;
+	private static int easterCounter;
+	private static int newYearCounter;
+	private static int halloweenCounter;
+	private static String withoutWildcard;
 	
-	
+
     public GUI() 
     {
     	frame = new JFrame("GUI");
@@ -58,36 +65,51 @@ public class GUI extends JFrame
         c.gridx = 0;
         c.gridy = 6;
         panel.add(inputField, c);
-        Task_Label = new JLabel("Please enter a term to be searched:"); 
+        searchLabel = new JLabel("Please enter a term to be searched:"); 
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 5;
-        panel.add(Task_Label, c);
-        Result_Label = new JLabel(""); 
+        panel.add(searchLabel, c);
+        firstFileResult = new JLabel(""); 
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 1;
-        panel.add(Result_Label, c);
-        Second_Result_Label = new JLabel(""); 
+        panel.add(firstFileResult, c);
+        secondFileResult = new JLabel(""); 
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 2;
-        panel.add(Second_Result_Label, c);
-        Third_Result_Label = new JLabel("");
+        panel.add(secondFileResult, c);
+        thirdFileResult = new JLabel("");
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 3;
-        panel.add(Third_Result_Label, c);
-        Fourth_Result_Label = new JLabel("");
+        panel.add(thirdFileResult, c);
+        fourthFileResult = new JLabel("");
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 4;
-        panel.add(Fourth_Result_Label, c);
-        Second_Task_Label = new JLabel(""); 
+        panel.add(fourthFileResult, c);
+        firstWildcardResult = new JLabel(""); 
         c.weightx = 0.5;
         c.gridx = 0;
         c.gridy = 7;
-        panel.add(Second_Task_Label, c);
+        panel.add(firstWildcardResult, c);
+        secondWildcardResult = new JLabel(""); 
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 8;
+        panel.add(secondWildcardResult, c);
+        thirdWildcardResult = new JLabel(""); 
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 9;
+        panel.add(thirdWildcardResult, c);
+        fourthWildcardResult = new JLabel(""); 
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 10;
+        panel.add(fourthWildcardResult, c);
         
         
         frame.getContentPane().add(panel);
@@ -114,6 +136,16 @@ public class GUI extends JFrame
 	}
 
 	
+	
+
+	public static String getwithoutWildcard() {
+		return withoutWildcard;
+	}
+
+	public static void setwithoutWildcard(String withoutWildcard) {
+		GUI.withoutWildcard = withoutWildcard;
+	}
+
 	public JPanel getPanel() {
 		return panel;
 	}
@@ -122,60 +154,121 @@ public class GUI extends JFrame
 		this.panel = panel;
 	}
 
-	public JLabel getTask_Label() {
-		return Task_Label;
+	public JLabel getSearchLabel() {
+		return searchLabel;
 	}
 
-	public void setTask_Label(JLabel task_Label) {
-		Task_Label = task_Label;
+	public void setSearchLabel(JLabel searchLabel) {
+		this.searchLabel = searchLabel;
 	}
 
-
-	public JLabel getResult_Label() {
-		return Result_Label;
+	public static JLabel getFirstFileResult() {
+		return firstFileResult;
 	}
 
-	public void setResult_Label(JLabel result_Label) {
-		Result_Label = result_Label;
+	public static void setFirstFileResult(JLabel firstFileResult) {
+		GUI.firstFileResult = firstFileResult;
 	}
 
-	public JLabel getSecond_Result_Label() {
-		return Second_Result_Label;
+	public static JLabel getSecondFileResult() {
+		return secondFileResult;
 	}
 
-	public void setSecond_Result_Label(JLabel second_Result_Label) {
-		Second_Result_Label = second_Result_Label;
+	public static void setSecondFileResult(JLabel secondFileResult) {
+		GUI.secondFileResult = secondFileResult;
 	}
 
-	public JLabel getThird_Result_Label() {
-		return Third_Result_Label;
+	public static JLabel getThirdFileResult() {
+		return thirdFileResult;
 	}
 
-	public void setThird_Result_Label(JLabel third_Result_Label) {
-		Third_Result_Label = third_Result_Label;
+	public static void setThirdFileResult(JLabel thirdFileResult) {
+		GUI.thirdFileResult = thirdFileResult;
 	}
 
-	public JLabel getFourth_Result_Label() {
-		return Fourth_Result_Label;
+	public static JLabel getFourthFileResult() {
+		return fourthFileResult;
 	}
 
-	public void setFourth_Result_Label(JLabel fourth_Result_Label) {
-		Fourth_Result_Label = fourth_Result_Label;
+	public static void setFourthFileResult(JLabel fourthFileResult) {
+		GUI.fourthFileResult = fourthFileResult;
 	}
 
-	public JLabel getSecond_Task_Label() {
-		return Second_Task_Label;
+	public static JLabel getFirstWildcardResult() {
+		return firstWildcardResult;
 	}
 
-	public void setSecond_Task_Label(JLabel second_Task_Label) {
-		Second_Task_Label = second_Task_Label;
+	public static void setFirstWildcardResult(JLabel firstWildcardResult) {
+		GUI.firstWildcardResult = firstWildcardResult;
 	}
 
+	public static JLabel getSecondWildcardResult() {
+		return secondWildcardResult;
+	}
 
-	public static int Search_Christmas(String userInput) 
+	public static void setSecondWildcardResult(JLabel secondWildcardResult) {
+		GUI.secondWildcardResult = secondWildcardResult;
+	}
+
+	public static JLabel getThirdWildcardResult() {
+		return thirdWildcardResult;
+	}
+
+	public static void setThirdWildcardResult(JLabel thirdWildcardResult) {
+		GUI.thirdWildcardResult = thirdWildcardResult;
+	}
+
+	public static JLabel getFourthWildcardResult() {
+		return fourthWildcardResult;
+	}
+
+	public static void setFourthWildcardResult(JLabel fourthWildcardResult) {
+		GUI.fourthWildcardResult = fourthWildcardResult;
+	}
+
+	public static int getChristmasCounter() {
+		return christmasCounter;
+	}
+
+	public static void setChristmasCounter(int christmasCounter) {
+		GUI.christmasCounter = christmasCounter;
+	}
+
+	public static int getEasterCounter() {
+		return easterCounter;
+	}
+
+	public static void setEasterCounter(int easterCounter) {
+		GUI.easterCounter = easterCounter;
+	}
+
+	public static int getNewYearCounter() {
+		return newYearCounter;
+	}
+
+	public static void setNewYearCounter(int newYearCounter) {
+		GUI.newYearCounter = newYearCounter;
+	}
+
+	public static int getHalloweenCounter() {
+		return halloweenCounter;
+	}
+
+	public static void setHalloweenCounter(int halloweenCounter) {
+		GUI.halloweenCounter = halloweenCounter;
+	}
+
+	public static String getWithoutWildcard() {
+		return withoutWildcard;
+	}
+
+	public static void setWithoutWildcard(String withoutWildcard) {
+		GUI.withoutWildcard = withoutWildcard;
+	}
+
+	public static int searchChristmas(String userInput) 
     {
         int counter = 0;
-        int second_counter = 0;
         File firstFile = new File("Christmas.txt");
 
         Scanner christmasScanner = null;
@@ -184,25 +277,23 @@ public class GUI extends JFrame
         	christmasScanner = new Scanner(firstFile);
             while (christmasScanner.hasNext()) 
             {
-                String Word = christmasScanner.next();
+                String word = christmasScanner.next();
                                 if(userInput.contains("*"))
             	{
-                	Result_Label.setVisible(false);
-                	Second_Result_Label.setVisible(false);
-                	Third_Result_Label.setVisible(false);
-                	Fourth_Result_Label.setVisible(false);
+                	firstFileResult.setVisible(false);
+                	secondFileResult.setVisible(false);
+                	thirdFileResult.setVisible(false);
+                	fourthFileResult.setVisible(false);
                 	
-                	String without_wildcard = userInput.replace("*", "");
-            		if (Word.contains(without_wildcard))
+                	String withoutWildcard = userInput.replace("*", "");
+            		if (word.contains(withoutWildcard))
                     {
-            			System.out.println(Word);
-            			second_counter++;
+            			System.out.println(word);
+            			christmasCounter++;
                     }
-            		
-            		Second_Task_Label.setText("The word: " + without_wildcard + " was found in " + second_counter + " different words");
             	}
                 
-                if (Word.equals(userInput)) 
+                if (word.equals(userInput)) 
                 {
                     counter++;
                 }
@@ -216,9 +307,9 @@ public class GUI extends JFrame
         return counter;
     }
     
-    public static int Search_Easter(String userInput) 
+    public static int searchEaster(String userInput) 
     {
-        int counter = 0;
+    	int counter = 0;
         File secondFile = new File("Easter.txt");
 
         Scanner easterScanner = null;
@@ -227,8 +318,25 @@ public class GUI extends JFrame
         	easterScanner = new Scanner(secondFile);
             while (easterScanner.hasNext()) 
             {
-                String Word = easterScanner.next();
-                if (Word.equals(userInput)) 
+                String word = easterScanner.next();
+                
+                if(userInput.contains("*"))
+            	{
+                	firstFileResult.setVisible(false);
+                	secondFileResult.setVisible(false);
+                	thirdFileResult.setVisible(false);
+                	fourthFileResult.setVisible(false);
+                	
+                	String withoutWildcard = userInput.replace("*", "");
+            		if (word.contains(withoutWildcard))
+                    {
+            			System.out.println(word);
+            			easterCounter++;
+                    }
+
+            	}
+                
+                if (word.equals(userInput)) 
                 {
                     counter++;
                 }
@@ -238,13 +346,13 @@ public class GUI extends JFrame
         {
             // Handle file not found exception
             System.out.println("An error occurred." + e.getMessage());
-        } 
+        }
         return counter;
     }
     
-    public static int Search_NewYear(String userInput) 
+    public static int searchNewYear(String userInput) 
     {
-        int counter = 0;
+    	int counter = 0;
         File thirdFile = new File("NewYear.txt");
 
         Scanner newYearScanner = null;
@@ -253,8 +361,25 @@ public class GUI extends JFrame
         	newYearScanner = new Scanner(thirdFile);
             while (newYearScanner.hasNext()) 
             {
-                String Word = newYearScanner.next();
-                if (Word.equals(userInput)) 
+                String word = newYearScanner.next();
+                
+                if(userInput.contains("*"))
+            	{
+                	firstFileResult.setVisible(false);
+                	secondFileResult.setVisible(false);
+                	thirdFileResult.setVisible(false);
+                	fourthFileResult.setVisible(false);
+                	
+                	withoutWildcard = userInput.replace("*", "");
+            		if (word.contains(withoutWildcard))
+                    {
+            			System.out.println(word);
+            			newYearCounter++;
+                    }
+
+            	}
+                
+                if (word.equals(userInput)) 
                 {
                     counter++;
                 }
@@ -264,13 +389,13 @@ public class GUI extends JFrame
         {
             // Handle file not found exception
             System.out.println("An error occurred." + e.getMessage());
-        } 
+        }
         return counter;
     }
    
-    public static int Search_Halloween(String userInput) 
+    public static int searchHalloween(String userInput) 
     {
-        int counter = 0;
+    	int counter = 0;
         File fourthFile = new File("Halloween.txt");
 
         Scanner halloweenScanner = null;
@@ -279,8 +404,24 @@ public class GUI extends JFrame
         	halloweenScanner = new Scanner(fourthFile);
             while (halloweenScanner.hasNext()) 
             {
-                String Word = halloweenScanner.next();
-                if (Word.equals(userInput)) 
+                String word = halloweenScanner.next();
+                
+                if(userInput.contains("*"))
+            	{
+                	firstFileResult.setVisible(false);
+                	secondFileResult.setVisible(false);
+                	thirdFileResult.setVisible(false);
+                	fourthFileResult.setVisible(false);
+                	
+                	String withoutWildcard = userInput.replace("*", "");
+            		if (word.contains(withoutWildcard))
+                    {
+            			System.out.println(word);
+            			halloweenCounter++;
+                    }
+            	}
+                
+                if (word.equals(userInput)) 
                 {
                     counter++;
                 }
@@ -290,7 +431,7 @@ public class GUI extends JFrame
         {
             // Handle file not found exception
             System.out.println("An error occurred." + e.getMessage());
-        } 
+        }
         return counter;
     }
 

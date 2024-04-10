@@ -31,23 +31,15 @@ public class ActionListeners extends GUI
             	userInput = getInputField().getText();
             	
             
-				int result = Search_Christmas(userInput);
+				int result = searchChristmas(userInput);
+	          
+	            int secondResult = searchEaster(userInput);
 	            
-	            //Result_Label.setText("The word " + userInput + " was found " + String.valueOf(result) + " time(s) in the Christmas text file" );
-	            
-	            int second_result = Search_Easter(userInput);
-	            
-	            //Second_Result_Label.setText("The word " + userInput + " was found " + String.valueOf(second_result) + " time(s) in the Easter text file");
-	            
-	            int third_result = Search_NewYear(userInput);
-	            
-	            //Third_Result_Label.setText("The word " + userInput + " was found " + String.valueOf(third_result) + " time(s) in the New Year text file");
-	            
-	            int fourth_result = Search_Halloween(userInput);
-	            
-	            //\Fourth_Result_Label.setText("The word " + userInput + " was found " + String.valueOf(fourth_result) + " time(s) in the Halloween text file");
+	            int thirdResult = searchNewYear(userInput);
+ 
+	            int fourthResult = searchHalloween(userInput);
 	           
-	            int[] values = {result, second_result, third_result, fourth_result};
+	            int[] values = {result, secondResult, thirdResult, fourthResult};
 	        	
 	            for (int i = 0; i < values.length - 1; i++) {
 	                for (int j = 0; j < values.length - i - 1; j++) {
@@ -60,7 +52,25 @@ public class ActionListeners extends GUI
 	                }
 	            }
 	            
-	            JLabel[] Labels = {getResult_Label(), getSecond_Result_Label(), getThird_Result_Label(), getFourth_Result_Label()};
+	            int[] valuesWildcard = {getChristmasCounter(), getEasterCounter(), getNewYearCounter(), getHalloweenCounter()};
+	            
+	            for (int i = 0; i < valuesWildcard.length - 1; i++) {
+	                for (int j = 0; j < valuesWildcard.length - i - 1; j++) {
+	                    if (valuesWildcard[j] < valuesWildcard[j + 1]) {
+	                        // Swap values[j] and values[j + 1]
+	                        int temp = valuesWildcard[j];
+	                        valuesWildcard[j] = valuesWildcard[j + 1];
+	                        valuesWildcard[j + 1] = temp;
+	                    }
+	                }
+	            }
+	            
+	            
+	            
+	            JLabel[] Labels = {getFirstFileResult(), getSecondFileResult(), getThirdFileResult(), getFourthFileResult()};
+	            
+	            JLabel[] Labels_2 = {getFirstWildcardResult(), getSecondWildcardResult(), getThirdWildcardResult(), getFourthWildcardResult() };
+	            
 	            
 	            String[] order = {"First", "Second", "Third", "Fourth"};
 	            
@@ -68,6 +78,14 @@ public class ActionListeners extends GUI
 	            {
 	                Labels[i].setText("The word " +  getUserInput() +  " was found " + values[i] + " time(s) in the " + order[i] + " text file");
 	            }
+	            
+	            if(userInput.contains("*"))
+            	{
+	            	for(int i = 0; i < valuesWildcard.length; i++)
+	            	{
+	            		Labels_2[i].setText("The word: " + getwithoutWildcard() + " was found in " + valuesWildcard[i] + " different word(s) in the " + order[i] + " text file");
+	            	}
+            	}
             }
         
         });
